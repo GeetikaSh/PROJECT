@@ -5,3 +5,4 @@ sklearn
 yfinance
 keras
 tensorflow
+keras.layers
