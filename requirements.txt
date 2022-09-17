@@ -1,4 +1,4 @@
-upgrade pip
+
 matplotlib
 statsmodels
 seaborn
