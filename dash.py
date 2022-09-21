@@ -242,6 +242,7 @@ if select=='Model and Accuracy':
     log_g=df
     log_g['Close'] = np.log(log_g['Close']).diff()
     log_g=log_g.dropna()
+    train_data, test_data = log_g[3:int(len(log_g)*0.9)], log_g[int(len(log_g)*0.9):]
     model = sm.tsa.arima.ARIMA(log_g.Close, order=(1,0,1))
     model=sm.tsa.statespace.SARIMAX(log_g['Close'],order=(1,0,1),seasonal_order=(1,0,1,6))
     results=model.fit()
