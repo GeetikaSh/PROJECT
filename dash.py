@@ -339,17 +339,13 @@ if select=='Model and Accuracy':
     plt.plot(testPredictPlot)
     plt.legend(['Close Price',"Train Prediction","Prediction"])
     st.pyplot(fig)
+   st.header("Forecast")
     
-
-
-
-    st.header("Forecast")
-    
-    fig=plt.figure(figsize=(10,5))
-    plt.plot(test_predict)
-    plt.xlabel("Days")
-    plt.ylabel("Price")
-    st.pyplot(fig)
+   fig=plt.figure(figsize=(10,5))
+   plt.plot(test_predict)
+   plt.xlabel("Days")
+   plt.ylabel("Price")
+   st.pyplot(fig)
 
 
 
