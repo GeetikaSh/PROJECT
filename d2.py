@@ -35,6 +35,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import LSTM
 
+@st.cache
 
 # Project Details
 st.title("Time Series Forecasting")
@@ -49,7 +50,6 @@ df = yf.download('GOOG',
                       progress=False)
 select=st.sidebar.selectbox("Objective:",("Risk in Investment","Investment Period","Model and Accuracy"))
 
-@st.cache
 
 if select=="Risk in Investment":
   st.title("Exploratory Data Analysis of GOOGLE")
