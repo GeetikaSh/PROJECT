@@ -258,7 +258,7 @@ if select=='Model and Accuracy':
    
     st.header("Forecast")
     
-    fig=plt.figure(figsize=(10,5))
+    fig=plt.figure(figsize=(13,5))
     plt.plot(test_predict)
     plt.xlabel("Days")
     plt.ylabel("Price")
