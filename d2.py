@@ -143,7 +143,7 @@ if select=="Investment Period":
     supply or demand throughout a year, and it is these forces that drive 
     seasonal patterns.''')
     result = seasonal_decompose(df, model='multiplicative', period=365)
-    fig=plt.figure(figsize=(15,8))
+    fig=plt.figure(figsize=(12,8))
     fig = result.plot()
     
     plt.legend()
