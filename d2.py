@@ -144,7 +144,7 @@ if select=="Investment Period":
     seasonal patterns.''')
     result = seasonal_decompose(df, model='multiplicative', period=365)
     fig=plt.figure(figsize=(12,8))
-    fig = result.plot()
+    result.plot()
     
     plt.legend()
     st.pyplot(fig)
