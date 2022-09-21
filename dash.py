@@ -225,31 +225,6 @@ if select=='Model and Accuracy':
     st.pyplot(fig)
 
 
-#     st.text("Confidence Inerval")
-
-#     train_data, test_data = df[3:int(len(df)*0.9)], df[int(len(df)*0.9):]
-#     model = sm.tsa.arima.ARIMA(train_data, order=(1,1,1))  
-#     fitted = model.fit()  
-#     fc=fitted.forecast(101, alpha=0.05)
-#     fc.index=test_data.index
-#     forecast = fitted.get_forecast(101)
-#     conf = forecast.conf_int(alpha=0.05)
-#     conf.index=test_data.index
-#     fc_series = pd.Series(fc, index=test_data.index)
-#     lower_series = pd.Series(conf["lower Close"])
-#     upper_series = pd.Series(conf["upper Close"])
-    
-#     fig=plt.figure(figsize=(10,5), dpi=100)
-#     plt.plot(train_data, label='training data')
-#     plt.plot(test_data, color = 'blue', label='Actual Stock Price')
-#     plt.plot(fc_series, color = 'orange',label='Predicted Stock Price')
-#     plt.fill_between(lower_series.index, lower_series, upper_series, 
-#                     color='k', alpha=.10)
-#     plt.title('Predicted Value')
-#     plt.xlabel('Time')
-#     plt.ylabel('Closing Price')
-#     plt.legend(loc='upper left', fontsize=8)
-#     st.pyplot(fig)
 #     df2 = pd.DataFrame(columns=["Predicted"],index=pd.date_range("20220101", periods=365))
 #     x=1009
 #     for i in range (len(df2)):
@@ -271,7 +246,13 @@ if select=='Model and Accuracy':
     model=sm.tsa.statespace.SARIMAX(log_g['Close'],order=(1,0,1),seasonal_order=(1,0,1,6))
     results=model.fit()
     log_g['Forecast']=results.predict(dynamic=False)
-    fig=plt.figure(figsize=(10,5))
+    forecast = results.get_forecast(101)
+    conf = forecast.conf_int(alpha=0.05)
+    conf.index=test_data.index
+    lower_series = pd.Series(conf["lower Close"])
+    upper_series = pd.Series(conf["upper Close"])
+    
+    fig=plt.figure(figsize=(10,5), dpi=100)
     
     plt.plot(log_g["Close"],label="Actual")
     plt.plot(log_g["Forecast"],label="Predicted")
@@ -280,36 +261,7 @@ if select=='Model and Accuracy':
     plt.legend()
     st.pyplot(fig)
 
-    st.text("Confidence Interval")
-    train_data, test_data = df[3:int(len(df)*0.9)], df[int(len(df)*0.9):]
-    model = sm.tsa.arima.ARIMA(train_data, order=(1,0,1),seasonal_order=(1,0,1,12))  
-    fitted = model.fit()  
-    fc=fitted.forecast(101, alpha=0.05)
-    fc.index=test_data.index
-    forecast = fitted.get_forecast(101)
-    conf = forecast.conf_int(alpha=0.05)
-    conf.index=test_data.index
-    fc_series = pd.Series(fc, index=test_data.index)
-    lower_series = pd.Series(conf["lower Close"])
-    upper_series = pd.Series(conf["upper Close"])
     
-    fig=plt.figure(figsize=(10,5), dpi=100)
-    plt.plot(train_data, label='training data')
-    plt.plot(test_data, color = 'blue', label='Actual Stock Price')
-    plt.plot(fc_series, color = 'orange',label='Predicted Stock Price')
-    plt.fill_between(lower_series.index, lower_series, upper_series, 
-                    color='k', alpha=.10)
-    plt.title('Predicted Value')
-    plt.xlabel('Time')
-    plt.ylabel('Closing Price')
-    plt.legend(loc='upper left', fontsize=8)
-    st.pyplot(fig)
-    df2 = pd.DataFrame(columns=["Predicted"],index=pd.date_range("20220101", periods=365))
-    x=1009
-    for i in range (len(df2)):
-      df2.Predicted.iloc[i]=float(fitted.predict(x))
-      x=x+1
-
     #predict=df2.loc[date]
 
   if model=="SVR":
