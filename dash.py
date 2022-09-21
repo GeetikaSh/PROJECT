@@ -339,18 +339,18 @@ if select=='Model and Accuracy':
     plt.plot(testPredictPlot)
     plt.legend(['Close Price',"Train Prediction","Prediction"])
     st.pyplot(fig)
-    st.header("Accuracy")
-    d = {'Mean Square Error':[0.002,3.87,8.5,8.79],'Root Mean Square Error':[0.04,1.96,2.91,2.97],'R_2 Score':[0.99,-.27,0.98,0.98],'Accuracy in %': [99.99,96.13,91.5,91.2]}
-    df = pd.DataFrame(data=d,index=["ARIMA with z_score","ARIMA with log scale","SVR","LSTM"])
-    st.table(df)
-#    st.header("Forecast")
+    st.header("Forecast")
     
-#    fig=plt.figure(figsize=(10,5))
-#    plt.plot(test_predict)
-#    plt.xlabel("Days")
-#    plt.ylabel("Price")
-#    st.pyplot(fig)
-    st.header("Accuracy")
-    d = {'Mean Square Error':[0.002,3.87,8.5,8.79],'Root Mean Square Error':[0.04,1.96,2.91,2.97],'R_2 Score':[0.99,-.27,0.98,0.98],'Accuracy in %': [99.99,96.13,91.5,91.2]}
-    df = pd.DataFrame(data=d,index=["ARIMA with z_score","ARIMA with log scale","SVR","LSTM"])
-    st.table(df)
+    fig=plt.figure(figsize=(10,5))
+    plt.plot(test_predict)
+    plt.xlabel("Days")
+    plt.ylabel("Price")
+    st.pyplot(fig)
+
+
+
+
+  st.header("Accuracy")
+  d = {'Mean Square Error':[0.002,3.87,8.5,8.79],'Root Mean Square Error':[0.04,1.96,2.91,2.97],'R_2 Score':[0.99,-.27,0.98,0.98],'Accuracy in %': [99.99,96.13,91.5,91.2]}
+  df = pd.DataFrame(data=d,index=["ARIMA with z_score","ARIMA with log scale","SVR","LSTM"])
+  st.table(df)
