@@ -52,7 +52,7 @@ select=st.sidebar.selectbox("Objective:",("Risk in Investment","Investment Perio
 
 
 
-
+@st.cache
 def lstm(df):
   scaler=MinMaxScaler(feature_range=(0,1))
   df1=scaler.fit_transform(np.array(df).reshape(-1,1))
