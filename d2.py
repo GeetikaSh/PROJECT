@@ -50,6 +50,7 @@ df = yf.download('GOOG',
 select=st.sidebar.selectbox("Objective:",("Risk in Investment","Investment Period","Model and Accuracy"))
 
 
+
 if select=="Risk in Investment":
   st.title("Exploratory Data Analysis of GOOGLE")
   st.header(("Closing Price"))
@@ -137,14 +138,14 @@ if select=="Investment Period":
 
   if data=="Seasonality":
     st.header("Seasonality")
-    st.text('''Seasonality is the study of a market over time to establish if there
-is a regular and predictable change that occurs within that markets price every 
-calendar year.Every market experiences periods of either greater supply or 
-demand throughout a year, and it is these forces that drive seasonal patterns.''')
+    st.text('''Seasonality is the study of a market over time to establish if 
+    there is a regular and predictable change that occurs within that markets 
+    price every calendar year.Every market experiences periods of either greater 
+    supply or demand throughout a year, and it is these forces that drive 
+    seasonal patterns.''')
     result = seasonal_decompose(df, model='multiplicative', period=365)
-    
-    fig=result.plot()
-    plt.figure(figsize=(12,8))
+    fig = result.plot()
+    plt.xticks(rotation=45)
     plt.legend()
     st.pyplot(fig)
 df=df[['Close']]
@@ -206,7 +207,7 @@ if select=='Model and Accuracy':
     plt.xlabel('Time')
     plt.legend(loc = "upper left")
     st.pyplot(fig)
-    
+
   if model=="LSTM":
     st.header("LSTM")
     scaler=MinMaxScaler(feature_range=(0,1))
@@ -254,7 +255,10 @@ if select=='Model and Accuracy':
     plt.plot(testPredictPlot)
     plt.legend(['Close Price',"Train Prediction","Prediction"])
     st.pyplot(fig)
-   
+    
+
+
+
     st.header("Forecast")
     
     fig=plt.figure(figsize=(10,5))
@@ -262,6 +266,9 @@ if select=='Model and Accuracy':
     plt.xlabel("Days")
     plt.ylabel("Price")
     st.pyplot(fig)
+
+
+
 
   st.header("Accuracy")
   d = {'Mean Square Error':[0.002,3.87,8.5,8.79],'Root Mean Square Error':[0.04,1.96,2.91,2.97],'R_2 Score':[0.99,-.27,0.98,0.98],'Accuracy in %': [99.99,96.13,91.5,91.2]}
