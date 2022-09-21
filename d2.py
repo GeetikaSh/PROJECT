@@ -207,6 +207,7 @@ if select=='Model and Accuracy':
     plt.xlabel('Time')
     plt.legend(loc = "upper left")
     st.pyplot(fig)
+  
 @st.cache
   if model=="LSTM":
     st.header("LSTM")
