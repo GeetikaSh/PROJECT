@@ -350,7 +350,8 @@ if select=='Model and Accuracy':
 
 
 
+
   st.header("Accuracy")
-  d = {'Mean Square Error':[19.18,20.03,8.5,8.79],'Root Mean Square Error':[4.38,4.47,2.91,2.97],'R_2 Score':[-.12,-.16,0.98,0.98],'Accuracy in %': [80.81,79.96,91.5,91.2]}
+  d = {'Mean Square Error':[0.002,3.87,8.5,8.79],'Root Mean Square Error':[0.04,1.96,2.91,2.97],'R_2 Score':[0.99,-.27,0.98,0.98],'Accuracy in %': [99.99,96.13,91.5,91.2]}
   df = pd.DataFrame(data=d,index=["ARIMA with z_score","ARIMA with log scale","SVR","LSTM"])
   st.table(df)
