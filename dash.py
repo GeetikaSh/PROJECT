@@ -257,6 +257,9 @@ if select=='Model and Accuracy':
     
     plt.plot(log_g["Close"],label="Actual")
     plt.plot(log_g["Forecast"],label="Predicted")
+    plt.fill_between(lower_series.index, lower_series, upper_series, 
+                    color='k', alpha=.10)
+    
 
     plt.ylabel("Normalized Closing Price")
     plt.legend()
