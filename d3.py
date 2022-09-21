@@ -90,7 +90,7 @@ def lstm(df):
   testPredictPlot=np.empty_like(df1)
   testPredictPlot[:,:]=np.nan
   testPredictPlot[len(train_predict)+(look_back*2)+1:len(df1)-1,:]=test_predict
-  return(df1,trainPredictPlot,testPredictPlot)
+  return(scaler.inverse_transform(df1),trainPredictPlot,testPredictPlot)
     #plot baseline and predictions
 
 
@@ -321,7 +321,7 @@ if select=='Model and Accuracy':
     # # #plot baseline and predictions
     df1,trainPredictPlot,testPredictPlot=lstm(df)
     fig=plt.figure(figsize=(10,5))
-    plt.plot(scaler.inverse_transform(df1))
+    plt.plot(df1)
     plt.xlabel("Days")
     plt.ylabel("Price")
     plt.plot(trainPredictPlot)
