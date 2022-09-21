@@ -49,7 +49,7 @@ df = yf.download('GOOG',
                       progress=False)
 select=st.sidebar.selectbox("Objective:",("Risk in Investment","Investment Period","Model and Accuracy"))
 
-
+@st.cache
 
 if select=="Risk in Investment":
   st.title("Exploratory Data Analysis of GOOGLE")
@@ -208,7 +208,6 @@ if select=='Model and Accuracy':
     plt.legend(loc = "upper left")
     st.pyplot(fig)
     
-    @st.cache
   if model=="LSTM":
     st.header("LSTM")
     scaler=MinMaxScaler(feature_range=(0,1))
