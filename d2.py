@@ -138,10 +138,10 @@ if select=="Investment Period":
 
   if data=="Seasonality":
     st.header("Seasonality")
-    st.text('''Seasonality is the study of a market over time to establish if there is a 
- regular and predictable change that occurs within that markets price every calendar year.
- Every market experiences periods of either greater supply or demand throughout a year, 
- and it is these forces that drive seasonal patterns.''')
+    st.text('''Seasonality is the study of a market over time to establish if there 
+is a regular and predictable change that occurs within that markets price every calendar 
+year.Every market experiences periods of either greater supply or demand throughout a 
+year, and it is these forces that drive seasonal patterns.''')
     result = seasonal_decompose(df, model='multiplicative', period=365)
     fig = result.plot()
     plt.legend()
