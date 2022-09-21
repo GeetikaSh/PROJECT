@@ -207,8 +207,8 @@ if select=='Model and Accuracy':
     plt.xlabel('Time')
     plt.legend(loc = "upper left")
     st.pyplot(fig)
-  
-@st.cache
+    
+    @st.cache
   if model=="LSTM":
     st.header("LSTM")
     scaler=MinMaxScaler(feature_range=(0,1))
@@ -256,10 +256,7 @@ if select=='Model and Accuracy':
     plt.plot(testPredictPlot)
     plt.legend(['Close Price',"Train Prediction","Prediction"])
     st.pyplot(fig)
-    
-
-
-
+   
     st.header("Forecast")
     
     fig=plt.figure(figsize=(10,5))
